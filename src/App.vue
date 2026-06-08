@@ -266,7 +266,13 @@ onUnmounted(() => {
         </div>
 
         <div class="names-label">Фамилия и имя (перечислите всех)</div>
-        <input type="text" name="guest_names" placeholder="Иван и Мария Ивановы" required class="text-input">
+        <textarea
+          name="guest_names"
+          rows="4"
+          placeholder="Иван и Мария Ивановы"
+          required
+          class="text-input text-input-area"
+        />
         <p v-if="guestFormStatus === 'sent'" class="form-feedback form-feedback-success">
           Спасибо! Ответ отправлен.
         </p>
@@ -672,6 +678,17 @@ body {
   outline: none;
   background: transparent;
   margin: 20px 0 16px;
+}
+
+.text-input-area {
+  display: block;
+  min-height: 100px;
+  resize: vertical;
+  line-height: 1.5;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin: 12px 0 16px;
 }
 
 .form-feedback {
