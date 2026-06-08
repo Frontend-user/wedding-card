@@ -283,7 +283,7 @@ onUnmounted(() => {
         <textarea
           name="guest_names"
           rows="4"
-          placeholder="Иван и Мария Ивановы"
+          placeholder="Например: Иван и Мария Ивановы"
           required
           class="text-input-area"
         />
@@ -298,7 +298,12 @@ onUnmounted(() => {
         </button>
       </form>
     </section>
-    <footer class="site-footer">KAREN &amp; ANNA • 2026</footer>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p class="site-footer__script">Карен <span class="site-footer__amp">&amp;</span> Анна</p>
+        <p class="site-footer__meta">2026</p>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -470,8 +475,10 @@ body {
   margin: 0 auto;
   background-color: var(--pearl);
   min-height: 100vh;
+  min-height: 100dvh;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
   position: relative;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 .reveal {
@@ -934,33 +941,52 @@ body {
 
 .submit-btn {
   width: 100%;
-  padding: 15px;
-  border: 1px solid #1a1a1a;
-  background: #f9f9f9;
-  border-radius: 12px;
+  padding: 16px 18px;
+  border: none;
+  border-radius: 14px;
   font-family: Montserrat, sans-serif;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  line-height: 1.25;
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+  background: linear-gradient(145deg, #d4b575 0%, #c5a059 45%, #a88642 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.35) inset,
+    0 4px 14px rgba(197, 160, 89, 0.35);
   cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
   transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
+    filter 0.2s ease,
     box-shadow 0.2s ease,
     transform 0.15s ease;
 }
 
 .submit-btn:hover:not(:disabled) {
-  background: #fffdf7;
-  border-color: var(--gold);
-  box-shadow: 0 4px 20px var(--gold-muted);
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+  filter: brightness(1.05);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.4) inset,
+    0 6px 22px rgba(197, 160, 89, 0.45);
 }
 
 .submit-btn:active:not(:disabled) {
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+  filter: brightness(0.97);
   transform: scale(0.99);
 }
 
 .submit-btn:disabled {
-  opacity: 0.65;
+  color: rgba(255, 255, 255, 0.88);
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.88);
+  opacity: 0.72;
   cursor: not-allowed;
+  filter: grayscale(0.15);
 }
 
 .names-label {
@@ -971,11 +997,50 @@ body {
 }
 
 .site-footer {
-  padding: 40px 28px 48px;
+  position: relative;
   text-align: center;
-  border-top: 1px solid var(--divider);
-  opacity: 0.35;
-  font-size: 10px;
-  letter-spacing: 0.12em;
+  padding: 32px 24px calc(28px + env(safe-area-inset-bottom, 0px));
+  margin-top: 8px;
+  background: linear-gradient(180deg, var(--pearl) 0%, #f3efe8 55%, var(--bg-page) 100%);
+  border-top: 1px solid rgba(197, 160, 89, 0.22);
+}
+
+.site-footer::before {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 3px;
+  margin: 0 auto 20px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.85;
+}
+
+.site-footer__inner {
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.site-footer__script {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(1.75rem, 7vw, 2.25rem);
+  color: #2c2c2c;
+  line-height: 1.2;
+  margin: 0 0 6px;
+}
+
+.site-footer__amp {
+  font-size: 0.85em;
+  opacity: 0.85;
+}
+
+.site-footer__meta {
+  font-family: Montserrat, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #8a8278;
+  margin: 0;
 }
 </style>
