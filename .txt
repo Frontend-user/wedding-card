@@ -10,3 +10,7 @@ esc + :wq  сохранить и выйти
 
  mv dist ../../var/www
  sudo service nginx restart
+
+
+Удалить старую сборку  rm -rf ../../var/www/dist
+перемесить    mv dist ../../var/www
