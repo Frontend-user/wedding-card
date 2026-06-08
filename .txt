@@ -1,0 +1,12 @@
+root
+hpvmHH2urhCi
+
+ssh -i ~/.ssh/id_ed25519_selectel root@161.104.48.196
+
+
+esc + :q!  выходи из vim
+dd удалить строку
+esc + :wq  сохранить и выйти
+
+ mv dist ../../var/www
+ sudo service nginx restart
