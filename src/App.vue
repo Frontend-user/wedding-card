@@ -169,34 +169,48 @@ onUnmounted(() => {
 
     <section class="section reveal active section-program">
       <div class="script-header">Программа дня</div>
-      <div class="program-block">
-        <div class="program-time">11:30</div>
-        <div class="program-title">Утро невесты</div>
-        <div class="program-place">Королёв, Ул. Гайдара д. 18</div>
-        <a href="https://yandex.ru/maps/-/CPXo6Znh" target="_blank" rel="noopener noreferrer" class="btn-map">На карте</a>
-      </div>
-      <div class="program-block">
-        <div class="program-time">15:30</div>
-        <div class="program-title">Венчание</div>
-        <div class="program-place">Москва, Олимпийский просп., 9</div>
-        <a href="https://yandex.ru/maps/-/CPXoeWkr" target="_blank" rel="noopener noreferrer" class="btn-map">На карте</a>
-      </div>
-      <div class="program-block">
-        <div class="program-time">17:30</div>
-        <div class="program-title">Сбор гостей</div>
-        <div class="program-place">Ресторан «Зелёная роща»</div>
-        <a href="https://yandex.ru/maps/-/CPU4J07Z" target="_blank" rel="noopener noreferrer" class="btn-map">На карте</a>
-      </div>
-      <div class="program-block">
-        <div class="program-time">18:00</div>
-        <div class="program-title">Начало банкета</div>
-        <div class="program-place">Ресторан «Зелёная роща»</div>
-        <a
-          href="https://yandex.ru/maps/org/zelyonaya_roshcha/1393290590/?ll=37.725639%2C55.996505&amp;z=14"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-map"
-        >На карте</a>
+      <div class="program-timeline">
+        <article class="program-item">
+          <div class="program-dot" aria-hidden="true" />
+          <div class="program-body">
+            <div class="program-time">11:30</div>
+            <div class="program-title">Утро невесты</div>
+            <div class="program-place">Королёв, Ул. Гайдара д. 18</div>
+            <a href="https://yandex.ru/maps/-/CPXo6Znh" target="_blank" rel="noopener noreferrer" class="btn-map">На карте</a>
+          </div>
+        </article>
+        <article class="program-item">
+          <div class="program-dot" aria-hidden="true" />
+          <div class="program-body">
+            <div class="program-time">15:30</div>
+            <div class="program-title">Венчание</div>
+            <div class="program-place">Москва, Олимпийский просп., 9</div>
+            <a href="https://yandex.ru/maps/-/CPXoeWkr" target="_blank" rel="noopener noreferrer" class="btn-map">На карте</a>
+          </div>
+        </article>
+        <article class="program-item">
+          <div class="program-dot" aria-hidden="true" />
+          <div class="program-body">
+            <div class="program-time">17:30</div>
+            <div class="program-title">Сбор гостей</div>
+            <div class="program-place">Ресторан «Зелёная роща»</div>
+            <a href="https://yandex.ru/maps/-/CPU4J07Z" target="_blank" rel="noopener noreferrer" class="btn-map">На карте</a>
+          </div>
+        </article>
+        <article class="program-item">
+          <div class="program-dot" aria-hidden="true" />
+          <div class="program-body">
+            <div class="program-time">18:00</div>
+            <div class="program-title">Начало банкета</div>
+            <div class="program-place">Ресторан «Зелёная роща»</div>
+            <a
+              href="https://yandex.ru/maps/org/zelyonaya_roshcha/1393290590/?ll=37.725639%2C55.996505&amp;z=14"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-map"
+            >На карте</a>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -247,21 +261,21 @@ onUnmounted(() => {
       </p>
       <form class="guest-form" @submit.prevent="onGuestSubmit">
         <div class="form-group">
-          <label class="radio-label">
+          <label class="radio-card">
             <input type="radio" name="attendance" value="Буду один / одна" required class="radio-input">
-            Буду один / одна
+            <span class="radio-card__text">Буду один / одна</span>
           </label>
         </div>
         <div class="form-group">
-          <label class="radio-label">
+          <label class="radio-card">
             <input type="radio" name="attendance" value="Буду с семьёй" class="radio-input">
-            Буду с семьёй
+            <span class="radio-card__text">Буду с семьёй</span>
           </label>
         </div>
         <div class="form-group">
-          <label class="radio-label">
+          <label class="radio-card">
             <input type="radio" name="attendance" value="К сожалению, не смогу приехать" class="radio-input">
-            К сожалению, не смогу приехать
+            <span class="radio-card__text">К сожалению, не смогу приехать</span>
           </label>
         </div>
 
@@ -271,7 +285,7 @@ onUnmounted(() => {
           rows="4"
           placeholder="Иван и Мария Ивановы"
           required
-          class="text-input text-input-area"
+          class="text-input-area"
         />
         <p v-if="guestFormStatus === 'sent'" class="form-feedback form-feedback-success">
           Спасибо! Ответ отправлен.
@@ -293,7 +307,11 @@ onUnmounted(() => {
   --pearl: #fdfcf9;
   --text-dark: #000;
   --gold: #c5a059;
+  --gold-soft: rgba(197, 160, 89, 0.22);
+  --gold-muted: rgba(197, 160, 89, 0.12);
   --bg-page: #e8e4df;
+  --divider: rgba(0, 0, 0, 0.07);
+  --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 *,
@@ -317,6 +335,16 @@ body {
 
 #app {
   min-height: 100%;
+}
+
+/* Доступность: видимый фокус клавиатуры */
+:where(a, button, textarea, input:not(.radio-input), .pearl-center):focus {
+  outline: none;
+}
+
+:where(a, button, textarea, input:not(.radio-input), .pearl-center):focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
 }
 
 #envelope-overlay {
@@ -349,7 +377,7 @@ body {
   width: 100%;
   background: #fff;
   background-image: url('https://www.transparenttextures.com/patterns/cream-pixels.png');
-  transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 1.5s var(--ease-out);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -410,6 +438,10 @@ body {
   cursor: pointer;
 }
 
+.pearl-center:focus:not(:focus-visible) {
+  outline: none;
+}
+
 .open-instruction {
   font-family: 'Playfair Display', serif;
   font-style: italic;
@@ -444,15 +476,38 @@ body {
 
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  filter: blur(8px);
-  transition: all 0.8s ease-out;
+  transform: translateY(22px);
+  filter: blur(6px);
+  transition:
+    opacity 0.75s var(--ease-out),
+    transform 0.75s var(--ease-out),
+    filter 0.75s var(--ease-out);
 }
 
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
   filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: opacity 0.35s ease;
+    transform: none;
+    filter: none;
+  }
+
+  .flap {
+    transition-duration: 0.35s;
+  }
+
+  #envelope-overlay {
+    transition-duration: 0.35s;
+  }
+
+  .submit-btn:active:not(:disabled) {
+    transform: none;
+  }
 }
 
 .img-block {
@@ -482,8 +537,13 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 35%;
-  background: linear-gradient(to bottom, transparent, var(--pearl) 95%);
+  height: 38%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(253, 252, 249, 0.35) 45%,
+    var(--pearl) 92%
+  );
   z-index: 2;
 }
 
@@ -496,28 +556,39 @@ body {
 
 .script-header {
   font-family: 'Great Vibes', cursive;
-  font-size: 55px;
+  font-size: clamp(2.5rem, 10vw, 3.45rem);
+  line-height: 1.12;
   color: #000;
   margin-bottom: 25px;
   text-align: center;
+  padding-inline: 8px;
+  margin-inline: auto;
+  max-width: 100%;
 }
 
 .hero-kicker {
   font-size: 11px;
-  letter-spacing: 5px;
-  color: #666;
+  letter-spacing: 0.42em;
+  color: #4a4a4a;
   margin-bottom: 15px;
   text-align: center;
+  font-weight: 500;
 }
 
 .hero-names {
-  font-size: 65px;
+  font-size: clamp(3.25rem, 12vw, 4.1rem);
   margin-bottom: 0;
+  max-width: none;
 }
 
 .section {
-  padding: 80px 30px;
+  padding: 72px 28px 80px;
   text-align: center;
+  border-top: 1px solid var(--divider);
+}
+
+.img-block + .section {
+  border-top: none;
 }
 
 .section-calendar {
@@ -533,6 +604,8 @@ body {
   font-size: 18px;
   line-height: 1.8;
   color: #333;
+  max-width: 32em;
+  margin-inline: auto;
 }
 
 .body-text-bold {
@@ -585,36 +658,97 @@ body {
 }
 
 .btn-map {
-  display: inline-block;
-  padding: 12px 25px;
-  border: 1px solid #eee;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 148px;
+  padding: 12px 22px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   text-decoration: none;
-  color: #444;
+  color: #3a3a3a;
   font-size: 13px;
+  font-weight: 500;
   background: #fff;
-  margin-top: 15px;
+  margin-top: 16px;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
 }
 
-.program-block {
-  margin-bottom: 50px;
+.btn-map:hover {
+  border-color: var(--gold);
+  color: #1a1a1a;
+  box-shadow: 0 2px 12px var(--gold-muted);
+  background: #fffef9;
+}
+
+.program-timeline {
+  position: relative;
+  text-align: left;
+  max-width: 360px;
+  margin: 0 auto;
+  padding-left: 8px;
+}
+
+.program-timeline::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 8px;
+  bottom: 12px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--gold), rgba(197, 160, 89, 0.2));
+}
+
+.program-item {
+  position: relative;
+  display: flex;
+  gap: 18px;
+  margin-bottom: 44px;
+}
+
+.program-item:last-child {
+  margin-bottom: 0;
+}
+
+.program-dot {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  margin-top: 6px;
+  border-radius: 50%;
+  background: var(--pearl);
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-muted);
+  z-index: 1;
+}
+
+.program-body {
+  flex: 1;
+  min-width: 0;
 }
 
 .program-time {
   font-size: 24px;
   font-weight: 300;
+  letter-spacing: 0.02em;
 }
 
 .program-title {
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin: 10px 0;
+  margin: 10px 0 6px;
+  font-size: 13px;
 }
 
 .program-place {
   font-style: italic;
-  color: #777;
+  color: #666;
   font-size: 14px;
+  line-height: 1.45;
 }
 
 .timer-heading {
@@ -629,7 +763,7 @@ body {
 
 .timer-cell {
   padding: 0 10px;
-  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: 1px solid rgba(197, 160, 89, 0.25);
 }
 
 .timer-row .timer-cell:first-child {
@@ -649,12 +783,95 @@ body {
 }
 
 .dress-code-heading {
-  font-size: 60px;
+  font-size: clamp(2rem, 8.5vw, 3.35rem);
+  line-height: 1.15;
+  max-width: 15ch;
+  margin-inline: auto;
 }
 
 .section-form {
   background: #fff;
   padding-bottom: 100px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.radio-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  background: #fafaf8;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.radio-card:hover {
+  border-color: rgba(197, 160, 89, 0.35);
+  background: #fffefb;
+}
+
+.radio-card:has(.radio-input:checked) {
+  border-color: rgba(197, 160, 89, 0.35);
+  background: #fdfcf9;
+}
+
+.radio-card:focus-within {
+  border-color: rgba(197, 160, 89, 0.45);
+}
+
+.radio-card:has(.radio-input:checked):focus-within {
+  border-color: rgba(197, 160, 89, 0.4);
+}
+
+.radio-card__text {
+  font-size: 15px;
+  line-height: 1.45;
+  color: #222;
+  padding-top: 1px;
+}
+
+.radio-input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 4px;
+  flex-shrink: 0;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.radio-input:hover {
+  border-color: rgba(197, 160, 89, 0.55);
+}
+
+.radio-input:checked {
+  border-color: var(--gold);
+  background: radial-gradient(circle at center, var(--gold) 42%, #fff 44%);
+  box-shadow: none;
+}
+
+.radio-input:focus {
+  outline: none;
+}
+
+.radio-input:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--gold-soft);
 }
 
 .form-intro {
@@ -668,20 +885,9 @@ body {
   margin: 0 auto;
 }
 
-.text-input {
-  width: 100%;
-  border: none;
-  border-bottom: 1px solid #000;
-  padding: 10px 0;
-  font-family: Montserrat, sans-serif;
-  font-size: 16px;
-  outline: none;
-  background: transparent;
-  margin: 20px 0 16px;
-}
-
 .text-input-area {
   display: block;
+  width: 100%;
   min-height: 100px;
   resize: vertical;
   line-height: 1.5;
@@ -689,6 +895,26 @@ body {
   border-radius: 8px;
   padding: 12px 14px;
   margin: 12px 0 16px;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  color: #222;
+  background: #fff;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.text-input-area:hover {
+  border-color: rgba(197, 160, 89, 0.35);
+}
+
+.text-input-area:focus {
+  outline: none;
+}
+
+.text-input-area:focus-visible {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-soft);
 }
 
 .form-feedback {
@@ -709,32 +935,32 @@ body {
 .submit-btn {
   width: 100%;
   padding: 15px;
-  border: 1px solid #000;
+  border: 1px solid #1a1a1a;
   background: #f9f9f9;
   border-radius: 12px;
   font-family: Montserrat, sans-serif;
   font-weight: 700;
   cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: #fffdf7;
+  border-color: var(--gold);
+  box-shadow: 0 4px 20px var(--gold-muted);
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: scale(0.99);
 }
 
 .submit-btn:disabled {
   opacity: 0.65;
   cursor: not-allowed;
-}
-
-.radio-label {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  font-size: 15px;
-  margin-bottom: 12px;
-  text-align: left;
-}
-
-.radio-input {
-  margin-right: 15px;
-  transform: scale(1.3);
-  accent-color: #000;
 }
 
 .names-label {
@@ -745,9 +971,11 @@ body {
 }
 
 .site-footer {
-  padding: 40px;
+  padding: 40px 28px 48px;
   text-align: center;
-  opacity: 0.2;
+  border-top: 1px solid var(--divider);
+  opacity: 0.35;
   font-size: 10px;
+  letter-spacing: 0.12em;
 }
 </style>
