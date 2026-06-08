@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue'
-import heroMain from './images/main.png'
-import heroMain2 from './images/main2.png'
+import heroMain from './images/main.jpg'
+import heroMain2 from './images/main2.jpg'
 import { GOOGLE_FORM_ACTION, buildGoogleFormBody } from './config/googleForm'
 
 const guestFormStatus = ref<'idle' | 'sending' | 'sent' | 'error'>('idle')
